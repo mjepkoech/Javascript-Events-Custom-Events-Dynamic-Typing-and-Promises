@@ -20,47 +20,29 @@ body{
 	border-radius: 4px;
 	padding: 20px 40px;
 }
-.div-demo {
-	background: #d9eeff;
-	width: 50%;
-	border-spacing: initial;
-	margin: 2px 0px;
-	word-break: break-word;
-	table-layout: auto;
-	line-height: 1.8em;
-	color: #333;
-	border-radius: 4px;
-}
-
-.btnprom{
-	padding: 10px 30px;
-	background-color: #3367b2;
-	border: 0;
-	color: #FFF;
-	cursor: pointer;
-	border-radius: 4px;
-	margin-left: 10px;
-}
 </style>
-<script>
-	function promisePage(){
-		let trialPromise = new Promise((resolve,reject)=>{
-					setTimeout(function(){
-						resolve("You have reached the promised page!");
-					},250);
-	});
-	trialPromise.then((successMessage)=>{
-    alert("Congratulations!! "+ successMessage);
-    });  
- }
-
-</script>
 
 </head>
 
 <body class="demo">
-<h4>Promise Event Demo</h4>
-<div class="div-demo"><p>A Promise is a way of defining a function in such a way that we can synchronously control its flow. <br>It is basically a means for turning an asynchronous function into a synchronous function. By using a Promise, one can more easily control when a function tells the running program to continue. <br>With their chaining syntax, Promises allow nesting of calls to other functions in a simple manner. </p></div>
-<button class="btnprom" onclick="promisePage()">Click Here To Confirm</button>
+<script>
+let cleanRoom = function(){
+	return new Promise(function(resolve,reject){
+	resolve('cleaned the room');
+	});
+};
+
+let removeGarbage = function(message){
+	return new Promise(function(resolve, reject){
+	resolve(message + 'remove garbage');
+	});
+};
+cleanRoom().then(function(result){
+	return removeGarbage(result);
+}).then(function(result){
+	console.log('finished' + result);
+})
+
+</script>
 </body>
 </html>

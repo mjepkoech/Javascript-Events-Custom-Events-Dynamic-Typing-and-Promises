@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Javascript events demo</title>
+<title>Javascript custom event demo</title>
 <style>
-body{
-	width:610px;
-	font-family:calibri;
-}
 
 .demo-table {
 	background: #d9eeff;
-	width: 100%;
+	width: 50%;
 	border-spacing: initial;
 	margin: 2px 0px;
 	word-break: break-word;
@@ -18,10 +14,6 @@ body{
 	line-height: 1.8em;
 	color: #333;
 	border-radius: 4px;
-	padding: 20px 40px;
-}
-.demo-table td {
-	padding: 15px 0px;
 }
 .demoInputBox {
 	padding: 10px 30px;
@@ -38,52 +30,24 @@ body{
 	margin-left: 10px;
 }
 </style>
-<script>
-function yourGender() {
-    prefer = document.forms[0].gender.value;
-    alert("You are" + prefer);
-}
-</script>
 
 </head>
 
-<body>
-<p id="view-region"></p>
-<table border="0" width="500" align="center" class="demo-table">
-    <th>Custom Event Demo</th>
-    <tr>
-        <td>Username</td>
-        <td>
-            <p id="main"></p>
-        </td>
-        <script>
-            var user = "Millicent";
-            document.getElementById("main").innerHTML = user;
-        </script>
-    </tr>
-    <tr>
-        <td>Enter Password</td>
-        <td>
-            <input type="password" class="demoInputBox" name="password" value="">
-        </td>
-    </tr>
-    <tr>
-        <td>Gender</td>td>
-        <td>
-            <select id="gender" class="demoInputBox" onchange="yourGender()">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Transgender">Transgender</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td colspan=2>
-            <input type="checkbox" name="terms"> I accept Terms and Conditions
-            <button class="btnRegister">Register</button>
-        </td>
-    </tr>
-</table>
-</form>
+<body class="demo-table">
+	<h3> JavaScript Custom Event</h3>
+	<form id="msgbox" action="#" method="get">
+	<label for="msg">Enter Your Full Names</label>
+	<input id="msg" value=""  class="demoInputBox"/>
+	<button class="btnRegister">Register</button>
+	</form>
+	<script type="text/javascript">
+		document.getElementById("msgbox").addEventListener("submit", function(e) {
+			e.preventDefault();
+			var msg = e.currentTarget.getElementById("msg").value.trim();
+			if (msg) {
+				alert(msg);
+			}
+		}, false);
+	</script>
 </body>
 </html>
